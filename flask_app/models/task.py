@@ -27,6 +27,3 @@ class Task:
         query = "UPDATE tasks SET name = %(name)s, text = %(text)s WHERE id = %(id)s"
         result =  connectToMySQL('kraken').query_db(query, data)
         return result
-    
-
-    
