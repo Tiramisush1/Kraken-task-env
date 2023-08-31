@@ -22,3 +22,11 @@ class Task:
         for row in results:
             tasks.append(cls(row))
         return tasks
+    @classmethod
+    def update(cls, data):
+        query = "UPDATE tasks SET name = %(name)s, text = %(text)s WHERE id = %(id)s"
+        result =  connectToMySQL('kraken').query_db(query, data)
+        return result
+    
+
+    
