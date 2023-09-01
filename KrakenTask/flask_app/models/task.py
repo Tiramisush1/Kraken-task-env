@@ -19,7 +19,7 @@ class Task:
         query = "SELECT * FROM tasks;"
         result = connectToMySQL('kraken').query_db(query)
         tasks = []
-        for row in results:
+        for row in result:
             tasks.append(cls(row))
         return tasks
     @classmethod
@@ -27,3 +27,4 @@ class Task:
         query = "UPDATE tasks SET name = %(name)s, text = %(text)s WHERE id = %(id)s"
         result =  connectToMySQL('kraken').query_db(query, data)
         return result
+        
