@@ -2,29 +2,11 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.controllers import User
 
 class Task:
-    def __init__(data, self):
+    def __init__(self, data):
         self.id = data ['id']
-        self.name = data['name']
-        self.text = data['text']
-        self.users = []
-        
-    @classmethod
-    def create(cls, data):
-        query = "INSERT INTO tasks (name, text) VALUES(%(name)s %(text)s)"
-        result = connectToMySQL('kraken').query_db(query, data)
-        return result
-    
-    @classmethod
-    def get_all(cls):
-        query = "SELECT * FROM tasks;"
-        result = connectToMySQL('kraken').query_db(query)
-        tasks = []
-        for row in result:
-            tasks.append(cls(row))
-        return tasks
-    @classmethod
-    def update(cls, data):
-        query = "UPDATE tasks SET name = %(name)s, text = %(text)s WHERE id = %(id)s"
-        result =  connectToMySQL('kraken').query_db(query, data)
-        return result
-        
+        self.name = data ['name']
+        self.description = data ['description']
+        self.expiry_date = data ['expiry_date']
+        self.user_id = []
+        self.priority_id = []
+        self.state_id = []
